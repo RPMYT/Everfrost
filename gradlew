@@ -67,6 +67,13 @@
 # Resolve links: $0 may be a link
 app_path=$0
 
+# My default JDK is Java 8, so I need to override that
+# However I don't want to override it for everyone (some may not even *have* a Java 17 JDK installed)
+# So I check if $HOSTNAME matches my laptop's ('archlaptop')
+if [ $HOSTNAME == "archlaptop" ]; then
+  export JAVA_HOME="/usr/lib/jvm/java-17-openjdk/"
+fi
+
 # Need this for daisy-chained symlinks.
 while
     APP_HOME=${app_path%"${app_path##*/}"}  # leaves a trailing /; empty if no leading path
