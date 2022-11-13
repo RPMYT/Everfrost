@@ -1,6 +1,7 @@
 package com.iridevescence.everfrost.block;
 
 import com.iridevescence.everfrost.Reference;
+import com.iridevescence.everfrost.util.Pair;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -17,13 +18,15 @@ import net.minecraft.util.registry.Registry;
 
 import java.lang.IllegalStateException;
 
-import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+
 
 public class EverfrostBlocks {
-    private static HashMap<String, Block> BLOCKS = new HashMap<>();
+    private static List<Pair<String, Block>> BLOCKS = new ArrayList<>();
 
     private static Block block(String name, Block block) {
-        BLOCKS.put(name, block);
+        BLOCKS.add(new Pair<>(name, block));
         return block;
     }
 
@@ -43,10 +46,10 @@ public class EverfrostBlocks {
         if (BLOCKS == null)
             throw new IllegalStateException("Called `init` more than once!");
 
-            
-        BLOCKS.forEach((name, block) -> {
-            Registry.register(Registry.BLOCK, new Identifier(Reference.MOD_ID, name), block);
-            Registry.register(Registry.ITEM, new Identifier(Reference.MOD_ID, name), new BlockItem(block, new Item.Settings()));
+
+        BLOCKS.forEach((pair) -> {
+            Registry.register(Registry.BLOCK, new Identifier(Reference.MOD_ID, pair.getLeft()), pair.getRight());
+            Registry.register(Registry.ITEM, new Identifier(Reference.MOD_ID, pair.getLeft()), new BlockItem(pair.getRight(), new Item.Settings()));
         });
         BLOCKS = null;
     }
