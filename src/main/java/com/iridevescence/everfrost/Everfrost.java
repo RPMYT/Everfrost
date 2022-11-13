@@ -4,7 +4,7 @@ import com.iridevescence.everfrost.block.EverfrostBlocks;
 import com.iridevescence.everfrost.item.EverfrostItems;
 import net.fabricmc.api.ModInitializer;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
-import net.minecraft.item.Items;
+import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
 
 public class Everfrost implements ModInitializer {
@@ -14,9 +14,10 @@ public class Everfrost implements ModInitializer {
         EverfrostBlocks.init();
 
         CustomPortalBuilder.beginPortal()
+                .lightWithWater()
+                .onlyLightInOverworld()
+                .frameBlock(Blocks.BLUE_ICE)
                 .tintColor(10, 10, 200)
-                .frameBlock(EverfrostBlocks.FROZEN_OBSIDIAN)
-                .lightWithItem(Items.AMETHYST_SHARD)
                 .destDimID(new Identifier("everfrost", "everfrost"))
                 .registerPortal();
     }

@@ -7,7 +7,14 @@
   "authors": [],
   "contact": {},
   "license": "GPL-3.0",
-  "icon": "assets/everfrost/icon.png",
+  "contributors": [
+    {
+      "name": "Misode, for their datapack generation tools.",
+      "contact": {
+        "homepage": "https://misode.github.io"
+      }
+    }
+  ],
   "environment": "*",
   "entrypoints": {
     "client": [
