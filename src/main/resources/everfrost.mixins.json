@@ -4,6 +4,7 @@
   "package": "com.iridevescence.everfrost.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "entity.PlayerEntityMixin"
   ],
   "client": [
   ],
