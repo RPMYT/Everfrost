@@ -38,7 +38,6 @@ public class EverfrostBlocks {
 
     public static final Block FROSTSOIL = block(Reference.Blocks.FROSTSOIL_ID, new Block(FabricBlockSettings.copy(Blocks.DIRT)));
     public static final Block PERMAFROST = block(Reference.Blocks.PERMAFROST_ID, new Block(FabricBlockSettings.copy(Blocks.STONE)));
-    public static final Block FROZEN_OBSIDIAN = block(Reference.Blocks.FROZEN_OBSIDIAN_ID, new Block(FabricBlockSettings.copy(Blocks.OBSIDIAN)));
 
     public static final Block NEVERGREEN_LOG = log(Reference.Blocks.NEVERGREEN_LOG_ID, MapColor.CYAN, MapColor.CYAN);
 

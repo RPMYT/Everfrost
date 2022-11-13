@@ -3,15 +3,69 @@
   "downfall": 0,
   "precipitation": "snow",
   "effects": {
-    "sky_color": 6463722,
-    "fog_color": 6463722,
-    "water_color": 1728436,
-    "water_fog_color": 1728436,
-    "grass_color": 3507428,
-    "foliage_color": 3507428
+    "sky_color": 7907327,
+    "fog_color": 2381402,
+    "water_color": 1321446,
+    "water_fog_color": 329011
   },
   "spawners": {},
   "spawn_costs": {},
-  "carvers": {},
-  "features": []
+  "carvers": {
+    "air": []
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      {
+        "feature": {
+          "type": "minecraft:ore",
+          "config": {
+            "size": 33,
+            "discard_chance_on_air_exposure": 0,
+            "targets": [
+              {
+                "target": {
+                  "predicate_type": "minecraft:block_match",
+                  "block": "everfrost:permafrost"
+                },
+                "state": {
+                  "Name": "everfrost:frostsoil"
+                }
+              }
+            ]
+          }
+        },
+        "placement": [
+          {
+            "type": "minecraft:count",
+            "count": 4
+          },
+          {
+            "type": "minecraft:in_square"
+          },
+          {
+            "type": "minecraft:height_range",
+            "height": {
+              "type": "minecraft:uniform",
+              "min_inclusive": {
+                "absolute": 0
+              },
+              "max_inclusive": {
+                "absolute": 320
+              }
+            }
+          }
+        ]
+      }
+    ],
+    [],
+    [],
+    [],
+    []
+  ]
 }

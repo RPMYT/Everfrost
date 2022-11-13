@@ -20,36 +20,43 @@ public class PlayerEntityMixin {
         int heat = HeatUtil.getHeatLevel(player);
 
         if (heat >= 0) {
-            if (!Objects.requireNonNullElse(player.getStatusEffect(StatusEffects.SLOWNESS), new StatusEffectInstance(StatusEffects.SLOWNESS)).isPermanent()) {
-                if (player.hasStatusEffect(StatusEffects.SLOWNESS)) {
-                    StatusEffectInstance instance = player.getStatusEffect(StatusEffects.SLOWNESS);
-                    if (instance != null) {
-                        instance.setPermanent(false);
-                    }
-                    player.setStatusEffect(instance, player);
+            if (player.hasStatusEffect(StatusEffects.SLOWNESS)) {
+                StatusEffectInstance instance = player.getStatusEffect(StatusEffects.SLOWNESS);
+                if (instance != null) {
+                    instance.setPermanent(false);
                 }
+                player.setStatusEffect(instance, player);
+            }
+
+            if (player.hasStatusEffect(StatusEffects.WEAKNESS)) {
+                StatusEffectInstance instance = player.getStatusEffect(StatusEffects.WEAKNESS);
+                if (instance != null) {
+                    instance.setPermanent(false);
+                }
+                player.setStatusEffect(instance, player);
             }
         }
 
-        if (heat < 0) {
+        if (heat <= -1) {
             if (!Objects.requireNonNullElse(player.getStatusEffect(StatusEffects.SLOWNESS), new StatusEffectInstance(StatusEffects.SLOWNESS)).isPermanent()) {
                 StatusEffectInstance instance = new StatusEffectInstance(StatusEffects.SLOWNESS, 2400 * -heat, -heat - 1);
                 instance.setPermanent(true);
-                player.addStatusEffect(instance);
+                player.setStatusEffect(instance, player);
             }
         }
 
-        if (heat < -1) {
+        if (heat <= -2) {
             if (!Objects.requireNonNullElse(player.getStatusEffect(StatusEffects.WEAKNESS), new StatusEffectInstance(StatusEffects.WEAKNESS)).isPermanent()) {
                 StatusEffectInstance instance = new StatusEffectInstance(StatusEffects.WEAKNESS, (-heat - 1), -heat - 2);
                 instance.setPermanent(true);
-                player.addStatusEffect(instance);
+                player.setStatusEffect(instance, player);
             }
         }
 
-        if (player.hurtTime == 0 && heat < -2) {
-            player.damage(DamageSource.FREEZE, 2f * (-heat-2));
+        if (player.hurtTime == 0 && heat <= -3) {
+            player.damage(DamageSource.FREEZE, 2f);
             player.animateDamage();
+            player.hurtTime = 20;
         }
     }
 }

@@ -4,7 +4,6 @@ import com.iridevescence.everfrost.Reference;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
-import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ public class EverfrostItems {
         return item;
     }
 
-    public static final Item FROST_CHARGE = item(Reference.Items.FROST_CHARGE_ID, new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
+
 
     public static void init() {
         if (ITEMS == null) {

@@ -3,74 +3,19 @@
   "downfall": 0,
   "precipitation": "snow",
   "effects": {
-    "sky_color": 6463722,
-    "fog_color": 6463722,
-    "water_color": 1728436,
-    "water_fog_color": 1728436,
-    "grass_color": 3507428,
-    "foliage_color": 3507428
+    "sky_color": 7907327,
+    "fog_color": 2381402,
+    "water_color": 1321446,
+    "water_fog_color": 329011
   },
   "spawners": {},
   "spawn_costs": {},
-  "carvers": {},
+  "carvers": {
+    "air": []
+  },
   "features": [
     [
-      {
-        "feature": {
-          "type": "minecraft:tree",
-          "config": {
-            "ignore_vines": true,
-            "force_dirt": true,
-            "minimum_size": {
-              "type": "minecraft:three_layers_feature_size"
-            },
-            "dirt_provider": {
-              "type": "minecraft:simple_state_provider",
-              "state": {
-                "Name": "everfrost:frostsoil"
-              }
-            },
-            "trunk_provider": {
-              "type": "minecraft:simple_state_provider",
-              "state": {
-                "Name": "everfrost:nevergreen_log"
-              }
-            },
-            "foliage_provider": {
-              "type": "minecraft:simple_state_provider",
-              "state": {
-                "Name": "minecraft:air"
-              }
-            },
-            "trunk_placer": {
-              "type": "minecraft:straight_trunk_placer",
-              "base_height": 5,
-              "height_rand_a": 2,
-              "height_rand_b": 0
-            },
-            "foliage_placer": {
-              "type": "minecraft:blob_foliage_placer",
-              "radius": 2,
-              "offset": 0,
-              "height": 3
-            },
-            "decorators": []
-          }
-        },
-        "placement": [
-          {
-            "type": "minecraft:count",
-            "count": 4
-          },
-          {
-            "type": "minecraft:in_square"
-          },
-          {
-            "type": "minecraft:heightmap",
-            "heightmap": "WORLD_SURFACE_WG"
-          }
-        ]
-      }
+      "everfrost:nevergreen_tree"
     ]
   ]
 }
