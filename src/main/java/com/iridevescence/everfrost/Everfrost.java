@@ -1,5 +1,6 @@
 package com.iridevescence.everfrost;
 
+import com.iridevescence.everfrost.Reference;
 import com.iridevescence.everfrost.block.EverfrostBlocks;
 import com.iridevescence.everfrost.item.EverfrostItems;
 import net.fabricmc.api.ModInitializer;
@@ -18,7 +19,7 @@ public class Everfrost implements ModInitializer {
                 .onlyLightInOverworld()
                 .frameBlock(Blocks.BLUE_ICE)
                 .tintColor(10, 10, 200)
-                .destDimID(new Identifier("everfrost", "everfrost"))
+                .destDimID(new Identifier(Reference.MOD_ID, Reference.MOD_ID))
                 .registerPortal();
     }
 }
