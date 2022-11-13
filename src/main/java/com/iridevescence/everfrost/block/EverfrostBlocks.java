@@ -1,5 +1,7 @@
 package com.iridevescence.everfrost.block;
 
+import com.iridevescence.everfrost.Reference;
+import com.iridevescence.everfrost.util.Pair;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -14,13 +16,17 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
 
-import java.util.HashMap;
+import java.lang.IllegalStateException;
+
+import java.util.List;
+import java.util.ArrayList;
+
 
 public class EverfrostBlocks {
-    private static final HashMap<String, Block> BLOCKS = new HashMap<>();
+    private static List<Pair<String, Block>> BLOCKS = new ArrayList<>();
 
     private static Block block(String name, Block block) {
-        BLOCKS.put(name, block);
+        BLOCKS.add(new Pair<>(name, block));
         return block;
     }
 
@@ -30,16 +36,21 @@ public class EverfrostBlocks {
         }).strength(2.0F).sounds(BlockSoundGroup.WOOD)));
     }
 
-    public static final Block FROSTSOIL = block("frostsoil", new Block(FabricBlockSettings.copy(Blocks.DIRT)));
-    public static final Block PERMAFROST = block("permafrost", new Block(FabricBlockSettings.copy(Blocks.STONE)));
-    public static final Block FROZEN_OBSIDIAN = block("frozen_obsidian", new Block(FabricBlockSettings.copy(Blocks.OBSIDIAN)));
+    public static final Block FROSTSOIL = block(Reference.Blocks.FROSTSOIL_ID, new Block(FabricBlockSettings.copy(Blocks.DIRT)));
+    public static final Block PERMAFROST = block(Reference.Blocks.PERMAFROST_ID, new Block(FabricBlockSettings.copy(Blocks.STONE)));
+    public static final Block FROZEN_OBSIDIAN = block(Reference.Blocks.FROZEN_OBSIDIAN_ID, new Block(FabricBlockSettings.copy(Blocks.OBSIDIAN)));
 
-    public static final Block NEVERGREEN_LOG = log("nevergreen_log", MapColor.CYAN, MapColor.CYAN);
+    public static final Block NEVERGREEN_LOG = log(Reference.Blocks.NEVERGREEN_LOG_ID, MapColor.CYAN, MapColor.CYAN);
 
     public static void init() {
-        BLOCKS.forEach((name, block) -> {
-            Registry.register(Registry.BLOCK, new Identifier("everfrost", name), block);
-            Registry.register(Registry.ITEM, new Identifier("everfrost", name), new BlockItem(block, new Item.Settings()));
+        if (BLOCKS == null)
+            throw new IllegalStateException("Called `init` more than once!");
+
+
+        BLOCKS.forEach((pair) -> {
+            Registry.register(Registry.BLOCK, new Identifier(Reference.MOD_ID, pair.getLeft()), pair.getRight());
+            Registry.register(Registry.ITEM, new Identifier(Reference.MOD_ID, pair.getLeft()), new BlockItem(pair.getRight(), new Item.Settings()));
         });
+        BLOCKS = null;
     }
 }
