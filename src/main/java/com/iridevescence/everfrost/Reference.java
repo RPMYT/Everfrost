@@ -1,3 +1,5 @@
+package com.iridevescence.everfrost;
+
 public final class Reference {
     public static final String MOD_ID = "everfrost";
 

@@ -1,16 +1,14 @@
 package com.iridevescence.everfrost.item;
 
 import com.iridevescence.everfrost.Reference;
-import com.iridevescence.everfrost.util.Pair;
-import com.iridevescence.everfrost.item.tool.FlintAndWintersteelItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Pair;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 
-import java.util.List;
 import java.util.ArrayList;
-import java.lang.IllegalStateException;
+import java.util.List;
 
 public class EverfrostItems {
     private static List<Pair<String, Item>> ITEMS = new ArrayList<>();

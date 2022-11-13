@@ -1,6 +1,5 @@
 package com.iridevescence.everfrost;
 
-import com.iridevescence.everfrost.Reference;
 import com.iridevescence.everfrost.block.EverfrostBlocks;
 import com.iridevescence.everfrost.item.EverfrostItems;
 import net.fabricmc.api.ModInitializer;
