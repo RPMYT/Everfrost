@@ -43,8 +43,9 @@ public class EverfrostBlocks {
     public static final Block NEVERGREEN_LOG = log(Reference.Blocks.NEVERGREEN_LOG_ID, MapColor.CYAN, MapColor.CYAN);
 
     public static void init() {
-        if (BLOCKS == null)
+        if (BLOCKS == null) {
             throw new IllegalStateException("Called `init` more than once!");
+        }
 
 
         BLOCKS.forEach((pair) -> {

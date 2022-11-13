@@ -21,8 +21,9 @@ public class EverfrostItems {
     public static final Item FROST_CHARGE = item(Reference.Items.FROST_CHARGE_ID, new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
 
     public static void init() {
-        if (ITEMS == null)
+        if (ITEMS == null) {
             throw new IllegalStateException("Called `init` more than once!");
+        }
         
         ITEMS.forEach((pair) -> Registry.register(Registry.ITEM, new Identifier(Reference.MOD_ID, pair.getLeft()), pair.getRight()));
         ITEMS = null;
